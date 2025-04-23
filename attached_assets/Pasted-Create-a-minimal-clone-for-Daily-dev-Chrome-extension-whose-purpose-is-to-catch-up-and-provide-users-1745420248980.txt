@@ -1,0 +1,293 @@
+Create a minimal clone for Daily.dev Chrome extension whose purpose is to catch up and provide users with the latest tech news feed, named TofanTech.
+- Use Vuejs as the base frontend framework with up-to-date libraries, and make them as minimal as possible. You can just use PrimeVue prebuilt components also use TailwindCSS for styling.
+- Add dark/white mode
+- Make it Multilangual En, Ar, and Fr. (use I18n library)
+- On the main page, add a news ticker that displays a random tech meme or motivation. Use some of  the following RSS websites to get them:
+
+
+Tech Memes RSS Feeds
+Memebase Cheezburger
+RSS: http://memebase.cheezburger.com/rss
+A popular hub for internet humor and memes across many topics.
+
+Know Your Meme
+RSS: https://knowyourmeme.com/newsfeed.rss
+Encyclopedic site documenting meme origins and trends.
+
+Indian Meme Templates
+RSS: https://indianmemetemplates.com/feed
+Meme templates focused on Indian internet culture.
+
+YuckSauce
+RSS: https://yucksauce.com/feed
+Offbeat and quirky internet humor and memes.
+
+Wotpost
+RSS: https://wotpost.com/feed
+Internet culture and tech-related humor.
+
+Chameleon Memes
+RSS: https://chameleonmemes.com/feed
+Memes adapting to the latest internet trends.
+
+FUNNY MEMES
+RSS: https://funnymemes.co/feed
+A variety of funny memes and pop culture humor.
+
+Growth Mindset Memes
+RSS: https://growthmindsetmemes.blogspot.com/feeds/posts/default
+Memes that combine humor with motivation and personal growth.
+
+DevHumor (Humor for Developers)
+RSS: https://devhumor.com/feed
+Developer-focused memes, gifs, and jokes.
+
+9GAG
+RSS: https://9gagrss.com/feed
+Large collection of funny pics, memes, gifs, and videos.
+
+The Daily WTF
+RSS: https://thedailywtf.com/rss.aspx
+Humorous IT and coding mishaps from software development.
+
+Motivational RSS Feeds
+Tiny Buddha Blog
+RSS: https://tinybuddha.com/blog-posts/feed
+Inspirational posts on mindfulness, personal growth, and happiness.
+
+SUCCESS Magazine
+RSS: https://success.com/feed
+Articles and resources focused on personal achievement and motivation.
+
+Growth Mindset Memes (also motivational)
+RSS: https://growthmindsetmemes.blogspot.com/feeds/posts/default
+Memes encouraging resilience and self-improvement.
+
+
+- add bookmark storing 
+- No backend is required, just get.RSS feeds from known and popular tech blogs and websites like these ones
+- Make the main theme colours green
+- No signing or login system, no user accounts, no comments.
+Just make store the bookmarks and the dark/white themes and likes on the user's browser's LocalStorage.
+- add all the files and configurations needed for the Chrome extension.
+
+-Use these RSS site links to gather up-to-date and popular tech news feeds.
+Here are the RSS feed links for the major tech news sources and developer-focused sites likely used by Daily.dev, based on the gathered information:
+
+| Source                          | RSS Feed URL                                                                                   |
+|--------------------------------|-----------------------------------------------------------------------------------------------|
+| **ByteByteGo**                 | https://blog.bytebytego.com/feed                                                             |
+| **David Heinemeier Hansson (DHH)** | https://dhh.dk/rss.xml (commonly used personal blog RSS, or see his essays on his site)      |
+| **Laravel News**               | https://laravel-news.com/feed                                                                 |
+| **PHP Dev**                   | https://phpdeveloper.org/feed                                                                 |
+| **Hacker News**               | https://news.ycombinator.com/rss                                                              |
+| **Medium (example for JavaScript)** | https://medium.com/feed/tag/javascript                                                     |
+| **TechCrunch (general)**       | https://techcrunch.com/feed/                                                                   |
+| **TechCrunch » Startups**      | https://techcrunch.com/category/startups/feed/                                                |
+| **The Verge (general)**        | https://www.theverge.com/rss/index.xml                                                        |
+| **The Verge » Tech**           | https://www.theverge.com/tech/rss/index.xml                                                   |
+| **Ars Technica (general)**     | https://feeds.arstechnica.com/arstechnica/index                                               |
+| **ZDNet (general)**            | https://www.zdnet.com/news/rss.xml                                                            |
+| **Computerworld**              | (Create RSS feed from Computerworld URL or use third-party RSS creators; no official feed found) |
+| **Dev.to**                    | https://dev.to/feed                                                                            |
+| **InfoQ**                     | https://www.infoq.com/feed/                                                                    |
+| **DZone**                     | https://dzone.com/feed                                                                          |
+| **The New Stack**             | https://thenewstack.io/feed/                                                                   |
+| **TLDR Newsletter**           | https://tldr.tech/feed/                                                                        |
+| **Techpresso**                | https://techpresso.substack.com/feed                                                          |
+| **Front Research**            | https://frontresearch.substack.com/feed                                                       |
+
+### Notes on Some Specific Feeds:
+- **David Heinemeier Hansson (DHH)**: His personal blog RSS is often at dhh.dk/rss.xml or similar, but many essays are also on his Basecamp blog.
+- **Medium**: RSS feeds are per publication or tag, e.g., for JavaScript tag: `https://medium.com/feed/tag/javascript`.
+- **Computerworld**: No official RSS feed readily available; you may need to create one using RSS creation tools or browser extensions.
+- **Substack newsletters**: Append `/feed` to the newsletter URL for RSS, e.g., `https://hipstertech.substack.com/feed`.
+
+These feeds cover the broad spectrum of tech news, developer insights, and community content aggregated by Daily.dev, enabling you to follow the latest updates directly via RSS readers.
+
+If you want, I can help generate a consolidated OPML file with these feeds for easy import into your RSS reader.
+
+Citations:
+[1] https://gist.github.com/noghartt/70e4ebb9af58df3b66b8efb856cc1ef5
+[2] https://substack.com/home/post/p-156326891
+[3] https://rss.feedspot.com/techcrunch_rss_feeds/
+[4] https://rss.feedspot.com/verge_rss_feeds/
+[5] https://rss.feedspot.com/arstechnica_rss_feeds/
+[6] https://rss.feedspot.com/zdnet_rss_feeds/
+[7] https://rss.app/en/rss-feed/computerworld-rss-feed
+[8] https://www.reddit.com/r/commandline/comments/12lm54c/a_good_list_of_rss_feeds_for_a_cli_rss_reader/
+[9] https://www.reddit.com/r/java/comments/snc5yo/are_there_any_recommended_java_mailing_listsnews/
+[10] https://stackoverflow.com/questions/31537109/dzone-frontpage-rss-feeds-broken
+[11] https://github.com/lalitpagaria/reddit-rss-reader
+[12] https://github.com/pbui/lobsters-bisque
+[13] https://www.reddit.com/r/sysadmin/comments/b3by3i/where_do_you_get_your_tech_news_please_share_your/
+[14] https://www.reddit.com/r/ChatGPTCoding/comments/13osf6z/i_recap_the_news_from_40_media_everyday_with_gpt4/
+[15] https://roboticsunderthestole.blogspot.com/2018/08/ieee-spectrum-robotics-rss-feed.html
+[16] https://cacm.acm.org/feeds-2/
+[17] https://github.com/levitatingpineapple/yt-rss
+[18] https://github.com/lmaurits/gopherfeed
+[19] https://www.meet-cambridge.com/rss-feeds/
+[20] https://rss.feedspot.com/lobster_rss_feeds/
+[21] https://www.reddit.com/r/workchronicles/
+[22] https://www.reddit.com/r/workchronicles/comments/166i1s6/always_be_overcommunicating/
+[23] https://www.reddit.com/r/audiodrama/comments/1bek29i/where_do_you_look_for_new_shows/
+[24] https://www.reddit.com/r/rss/comments/zl6gmo/i_made_a_rich_daily_digest_feed_for_hacker_news/
+[25] https://www.reddit.com/r/audiodrama/comments/s2rfdv/podcast_like_leviathan_chronicles/
+[26] https://www.reddit.com/r/devops/comments/17jdwvs/which_newsletters_do_you_subscribe_to/
+[27] https://www.reddit.com/r/webdev/comments/6psirg/well_shit_did_i_waste_my_time_learning_rails/
+[28] https://www.reddit.com/r/Wordpress/comments/1hobfxa/tracking_a_rss_feed_youre_aggregating_with_a/
+[29] https://www.reddit.com/r/PHPhelp/comments/gqa2p0/php_script_to_create_rss_feed/
+[30] https://www.reddit.com/r/minimalism/comments/6wc326/best_way_to_consume_news/
+[31] https://www.reddit.com/r/aws/comments/8k5irq/status_rss_for_useast1/
+[32] https://www.reddit.com/r/rss/comments/1ee32r5/rss_feed_not_updating_for_site_links_on_hacker/
+[33] https://web-cdn.bsky.app/profile/workchronicles.bsky.social
+[34] https://rss.feedspot.com/engineering_management_rss_feeds/
+[35] https://hackernewsrss.com
+[36] https://mastodon.social/@workchronicles/112321852442926765
+[37] https://liuzhenglaichn.gitbook.io/system-design/news-feed/design-a-news-feed-system
+[38] https://www.practicalecommerce.com/save-time-by-managing-less-says-dhh
+[39] https://github.com/vedmant/laravel-feed-reader
+[40] https://codeshack.io/rss-news-feed-php-mysql/
+[41] https://rss.feedspot.com/water_rss_feeds/
+[42] https://feeds.buzzsprout.com/1124402.rss
+[43] https://github.com/garritfra/positive_hackernews
+[44] https://www.reddit.com/r/rss/comments/1cb2x84/what_are_some_great_tech_news_rss_feeds_that/
+[45] https://www.reddit.com/r/rss/comments/1f4s23q/rss_is_not_the_solution_to_staying_informed_with/
+[46] https://www.reddit.com/r/startups/comments/2p50q6/i_think_ive_finally_had_enough_of_techcrunch_what/
+[47] https://www.reddit.com/r/hacking/comments/k47bnj/recommended_rss_feeds/
+[48] https://www.reddit.com/r/AskNetsec/comments/2a56rs/rss_infosec_feeds_list/
+[49] https://www.reddit.com/r/selfhosted/comments/ta41qf/where_do_you_get_your_daily_doze_of_interesting/
+[50] https://www.reddit.com/r/podcasting/comments/1i5istl/rss_questions/
+[51] https://www.reddit.com/r/rss/comments/1g7vt52/best_alternatives_to_the_verge_and_9to5mac/
+[52] https://www.reddit.com/r/sysadmin/comments/12kro23/techit_rss_feed_recommendations/
+[53] https://www.reddit.com/r/cybersecurity/comments/1aq0wdu/where_do_you_get_your_news_breaches_threat/
+[54] https://www.reddit.com/r/redditdev/comments/1jnkoq8/is_reddits_api_limitation_now_also_applying_to/
+[55] https://www.reddit.com/r/MachineLearning/comments/wpqdm3/d_what_are_your_favourite_aiml_rss_feeds_podcasts/
+[56] https://techcrunch.com/tag/rss/
+[57] https://techcrunch.com/subscribing/
+[58] https://techcrunch.com/rss-terms-of-use/
+[59] https://rss.app/en/rss-feed/techcrunch-rss-feed
+[60] https://www.zdnet.com/feature/rss-listing/
+[61] https://rss.feedspot.com/tech_news_rss_feeds/
+[62] https://www.cyberseo.net/public-rss-feed-catalogue/TechCrunch.com/
+[63] https://www.theverge.com/2024/10/17/24272640/rss-basically-works-like-social-media-should-work
+[64] https://arstechnica.com/rss-feeds/
+[65] https://www.computerworld.com/article/1712591/quickstudy-rss.html
+[66] https://techcrunch.com/tag/feeds/
+[67] https://www.reddit.com/r/reactjs/comments/z3txlq/medium_or_devto/
+[68] https://www.reddit.com/r/programming/comments/pnfb37/the_collapsing_quality_of_devto/
+[69] https://www.reddit.com/r/webdev/comments/1793mrq/best_rss_feeds_for_web_developers/
+[70] https://www.reddit.com/r/privacytoolsIO/comments/mjti92/best_software_to_read_multiple_news_aggregators/
+[71] https://www.reddit.com/r/rss/comments/1jphx9w/create_rss_feed_from_nothing/
+[72] https://www.reddit.com/r/devops/comments/j3t2cj/how_do_you_guys_stay_uptodate/
+[73] https://www.reddit.com/r/scala/comments/1fa9u8n/can_you_recommend_me_a_scala_programming_news/
+[74] https://www.reddit.com/r/rss/comments/1hwlnqf/need_a_best_app_for_rss_feeds_for_android_and_ios/
+[75] https://www.reddit.com/r/rss/comments/13ay2hm/created_rss_feed_with_any_website/
+[76] https://www.reddit.com/r/devops/comments/usje9o/do_you_read_devops_news/
+[77] https://www.reddit.com/r/javascript/comments/gqcsg/i_want_to_stay_current_through_feeds_who_should_i/
+[78] https://www.reddit.com/r/aws/comments/12tg195/stackfeedio_creates_tailored_newsrss_feeds_of/
+[79] https://dev.to/t/rss
+[80] https://www.cyberseo.net/public-rss-feed-catalogue/DevOps/
+[81] https://dzone.com/articles/how-to-build-self-hosted-rss-feed-reader-using-spr
+[82] https://rss.app/en/rss-feed/stack-rss-feed
+[83] https://dev.to/help/organizations/importing-your-organizations-content
+[84] https://rss.feedspot.com/software_architecture_rss_feeds/
+[85] https://rss.feedspot.com/developers_rss_feeds/
+[86] https://meta.stackoverflow.com/questions/381138/rss-feed-with-only-new-questions
+[87] https://dev.to/ndesmic/adding-an-rss-feed-to-a-blog-2klj
+[88] https://www.infoq.com/infoq/
+[89] https://www.devzery.com/post/best-rss-feeds
+[90] https://meta.stackexchange.com/questions/53945/rss-feed-for-new-stack-exchanges/64927
+[91] https://www.reddit.com/r/programming/comments/1ao80c3/rss_is_still_pretty_great/
+[92] https://www.reddit.com/r/ExperiencedDevs/comments/1i7ei1g/what_are_your_go_to_programming_rss_feeds/
+[93] https://www.reddit.com/r/programming/comments/66678/ask_reddit_what_csprogramming_rss_feeds_should_i/
+[94] https://www.reddit.com/r/rust/comments/160n5gc/collie_a_minimal_rss_reader_just_for_you/
+[95] https://www.reddit.com/r/RedditAlternatives/comments/14539ql/reddit_alternatives_you_should_use_tldr/
+[96] https://www.reddit.com/r/selfhosted/comments/145iw0v/good_rss_feeds_to_follow/
+[97] https://www.reddit.com/r/Lobster_/rising/
+[98] https://www.reddit.com/r/apolloapp/comments/1461d4u/tildesnet_app/
+[99] https://www.reddit.com/r/webdev/comments/11quu0w/are_there_more_fullyfledged_opensource_websites/
+[100] https://www.reddit.com/r/Infinity_For_Reddit/comments/14kq31q/ive_been_working_on_a_fork_of_infinity_for/
+[101] https://www.reddit.com/r/learnprogramming/comments/pgjpyb/what_are_some_of_your_favourite_rss_feeds_for/
+[102] https://bsky.app/profile/lobsters-feed.bsky.social/post/3ljmlwtydod2i
+[103] https://github.com/lobsters/lobsters/issues/1242
+[104] https://bsky.app/profile/lobsters-feed.bsky.social/post/3lli36vefyc2x
+[105] https://stackoverflow.com/questions/8292143/reddit-rss-feed-more-than-just-the-25-results
+[106] https://www.reddit.com/r/gamedev/comments/1iid0c7/i_made_a_tldrstyle_newsletter_for_gaming_news/
+[107] https://www.reddit.com/r/rss/comments/16im22p/rss_feeds_with_full_content/
+[108] https://www.reddit.com/r/rust/comments/1agfqt2/all_eurorust_2023_talks_ordered_by_the_view_count/
+[109] https://www.reddit.com/r/AskAcademia/comments/l6bof8/what_is_your_workflow_for_staying_in_the_loop/
+[110] https://www.reddit.com/r/slatestarcodex/comments/qdjf9m/what_websites_do_you_all_check_more_than_once_per/
+[111] https://www.reddit.com/r/compsci/comments/2pdgno/best_news_sources_for_computer_science/
+[112] https://www.reddit.com/r/reactjs/comments/q0zqz6/be_careful_of_youtubers_you_followsome_just_dont/
+[113] https://www.reddit.com/r/tldrnews/
+[114] https://www.reddit.com/r/selfhosted/comments/1dhfuuu/where_do_you_get_your_daily_doze_of_interesting/
+[115] https://tldr.tech
+[116] https://app.follow.is/share/feeds/57402409406376960
+[117] https://tldrsec.com
+[118] https://news.ycombinator.com/item?id=1802207
+[119] https://kodora.ai/ai-tool/techpresso/
+[120] https://github.com/impressivewebs/frontend-feeds
+[121] https://ieeetv.ieee.org/rssfeeds
+[122] https://libraries.acm.org/training-resources/new-dl-features/search-alerts-and-rss
+[123] https://read.engineerscodex.com/p/how-fireship-became-youtubes-favorite
+[124] https://changelog.com/gotime/245
+[125] https://gothamgo.com
+[126] https://www.reddit.com/r/audiodrama/comments/xy7j6g/your_fiction_podcasts_rss_feed_is_a_mess_ill_help/
+[127] https://www.reddit.com/r/cybersecurity/comments/114wbkx/best_way_to_stay_on_top_of_industry_news/
+[128] https://www.reddit.com/r/ExperiencedDevs/comments/13yuo0n/what_blogs_do_you_follow/
+[129] https://www.reddit.com/r/rails/comments/rierfa/i_interviewed_david_heinemeier_hansson_dhh/
+[130] https://www.reddit.com/r/webdev/comments/1ddln6v/creating_rssfeed_programmatically/
+[131] https://www.reddit.com/r/PHP/comments/ja47a/can_i_put_the_items_from_an_rss_feed_into_an_array/
+[132] https://www.reddit.com/r/Mastodon/comments/10gyu4o/can_mastodon_replace_twitter_as_a_news_aggregator/
+[133] https://www.reddit.com/r/dataengineering/comments/13lppxu/any_data_engineering_podcasts/
+[134] https://workchronicles.com/support/
+[135] https://workchronicles.com/comics/
+[136] https://workchronicles.substack.com
+[137] https://leopoletto.com/automatically-generate-rss-feeds-in-a-laravel-application/
+[138] https://github.com/dg/rss-php
+[139] https://www.computerweekly.com/rss
+[140] https://www.reddit.com/r/sysadmin/comments/b3by3i/where_do_you_get_your_tech_news_please_share_your/
+[141] https://www.reddit.com/r/macapps/comments/1jnc7x5/aifirst_rss_feed/
+[142] https://www.reddit.com/r/mcp/comments/1j6ucha/the_verge_news_mcp_server_provides_tools_to_fetch/
+[143] https://www.reddit.com/r/engineering/comments/ib9ff/what_are_some_good_engineering_publications_to/
+[144] https://www.reddit.com/r/rss/comments/1e3ou4q/zdnet_kills_the_linux_rss_feed_syndication/
+[145] https://www.reddit.com/r/sysadmin/comments/174f6h/what_rss_feeds_and_mailing_lists_do_you_subscribe/
+[146] https://www.reddit.com/r/selfhosted/comments/145ewl6/with_reddit_sunsetting_im_looking_back_to_rss/
+[147] https://www.reddit.com/r/rss/comments/1de070o/best_feed_for_breaking_news/
+[148] https://tagembed.com/support/add-techcrunch-rss-feed/
+[149] https://www.cyberseo.net/public-rss-feed-catalogue/Verge/
+[150] https://rss.app/en/rss-feed/ars-technica-rss-feed
+[151] https://www.reddit.com/r/DevelEire/comments/wfv8x4/keeping_up_to_date_with_latest_tech/
+[152] https://www.reddit.com/r/Substack/comments/my6p7z/reading_substacks_with_rss/
+[153] https://www.reddit.com/r/redditdev/comments/1fslcoi/can_you_develop_apps_using_the_rss_feed_or_do_you/
+[154] https://www.reddit.com/r/PinoyProgrammer/comments/12ybr90/where_do_you_get_your_latest_news_and_trends_on/
+[155] https://www.reddit.com/r/cybersecurity/comments/12qwr58/what_websites_do_yall_use_to_stay_up_to_date/
+[156] https://dev.to/eightt/comment/l882
+[157] https://dev.to/fernand0/do-personal-posts-in-dev-to-have-an-rss-feed-personal-posts-in-dev-to-do-have-an-rss-feed-374i
+[158] https://dev.to/kallmanation/dev-to-writing-rss-j0o
+[159] https://dev.to/tessak22/connecting-your-rss-feed-url-for-easy-publishing-to-dev-to-31de
+[160] https://www.infoq.com/news/2014/02/infoq-topics-rss/
+[161] https://dev.to/kubefeeds/top-kubernetes-rss-feeds-that-you-must-follow-11c
+[162] https://pipedream.com/apps/dev-to/integrations/rss
+[163] https://www.reddit.com/r/rss/comments/18xkn0q/collie_a_minimal_feed_reader_just_for_you/
+[164] https://www.reddit.com/r/RedditAlternatives/comments/1akdl2e/alternative_to_redditforum_where_knowledgeable/
+[165] https://www.reddit.com/r/rss/comments/18l15nx/how_to_generate_rss_feed_for_free/
+[166] https://www.reddit.com/r/MachineLearning/comments/14ionyi/additional_resources/
+[167] https://www.reddit.com/r/opensource/comments/1508xdw/follow_your_niche_interests_have_more_control/
+[168] https://help.tilda.cc/rss
+[169] https://tildes.net/~tildes/bxn/does_tildes_have_rss_feeds
+[170] https://tildes.net/~tildes/10e0/rss_feed_improvements
+[171] https://knowledge.exlibrisgroup.com/campusM/Training/campusM_How_to/How_to_Add_an_RSS_Feed_Tile
+[172] https://www.reddit.com/r/rss/comments/noaujb/rss_readers_for_newsletters/
+[173] https://www.reddit.com/r/rss/comments/15s2l1p/email_newsletter_to_rss/
+[174] https://www.reddit.com/r/rss/comments/hc01o8/rss_feed_for_scientific_publications/
+[175] https://www.reddit.com/r/AskAcademia/comments/bq3bbe/how_do_i_keep_up_with_the_top_papers_in_your_field/
+[176] https://www.paved.com/blog/tldr-newsletter-curation/
+[177] https://foundr.ai/product/techpresso
+[178] https://rss.feedspot.com/frontend_rss_feeds/
+
+---
+
+us can use rss-parser js package to parse these feeds if you want.
+- Also, take these screenshots as a reference
