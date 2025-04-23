@@ -1,19 +1,28 @@
 <template>
   <header class="top-bar">
     <div class="logo-container">
-      <img :src="logoSrc" alt="TofanTech Logo" class="logo" />
-      <h1 class="app-title">{{ $t('app.name') }}</h1>
+      <!-- <img :src="logoSrc" alt="TofanTech Logo" class="logo" /> -->
+      <h1 class="app-title">{{ $t("app.name") }}</h1>
     </div>
-    
+
     <div class="search-container">
       <div class="search-input-wrapper">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="search-icon">
-          <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="search-icon"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+            clip-rule="evenodd"
+          />
         </svg>
-        <input 
-          type="text" 
-          v-model="searchQuery" 
-          :placeholder="$t('actions.search')" 
+        <input
+          type="text"
+          v-model="searchQuery"
+          :placeholder="$t('actions.search')"
           class="search-input"
         />
       </div>
@@ -22,58 +31,118 @@
         <span>K</span>
       </div>
     </div>
-    
+
     <div class="actions-container">
       <!-- Level Up Button (similar to daily.dev) -->
       <button class="btn-level-up">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="level-up-icon">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="level-up-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+          />
         </svg>
-        <span>{{ $t('actions.levelUp') }}</span>
+        <span>{{ $t("actions.levelUp") }}</span>
       </button>
-      
+
       <!-- Notification Button -->
       <button class="btn-icon notifications-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+          />
         </svg>
       </button>
-      
+
       <!-- Refresh Button -->
-      <button 
+      <button
         class="btn-icon refresh-btn"
-        :class="{ 'loading': isLoading }"
-        @click="refreshFeed" 
+        :class="{ loading: isLoading }"
+        @click="refreshFeed"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+          />
         </svg>
       </button>
-      
+
       <!-- Theme Toggle Button -->
-      <button 
+      <button
         class="btn-icon theme-toggle"
-        @click="toggleTheme" 
+        @click="toggleTheme"
+        :title="
+          currentTheme === 'dark'
+            ? 'Switch to Light Mode'
+            : 'Switch to Dark Mode'
+        "
       >
-        <svg v-if="currentTheme === 'dark'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+        <svg
+          v-if="currentTheme === 'dark'"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+          />
         </svg>
-        <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+        <svg
+          v-else
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+          />
         </svg>
       </button>
-      
+
       <!-- Language Dropdown (simplified to match daily.dev style) -->
       <div class="language-dropdown-container">
         <button class="btn-icon language-btn" @click="toggleLanguageDropdown">
-          <span class="language-code">{{ selectedLanguage.code.toUpperCase() }}</span>
+          <span class="language-code">{{
+            selectedLanguage.code.toUpperCase()
+          }}</span>
         </button>
         <div v-if="showLanguageDropdown" class="language-dropdown">
-          <div 
-            v-for="lang in languageOptions" 
-            :key="lang.code" 
+          <div
+            v-for="lang in languageOptions"
+            :key="lang.code"
             class="language-option"
-            :class="{ 'selected': selectedLanguage.code === lang.code }"
+            :class="{ selected: selectedLanguage.code === lang.code }"
             @click="selectLanguage(lang)"
           >
             <span>{{ lang.name }}</span>
@@ -85,83 +154,92 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, watch } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { useStore } from 'vuex';
-import logoSrc from '../assets/logo.svg';
+import { ref, computed, onMounted, watch } from "vue";
+import { useI18n } from "vue-i18n";
+import { useStore } from "vuex";
+import logoSrc from "../assets/logo.svg";
 
 export default {
-  name: 'TopBar',
+  name: "TopBar",
   props: {
     currentTheme: {
       type: String,
-      default: 'dark'
-    }
+      default: "dark",
+    },
   },
-  emits: ['toggle-theme'],
+  emits: ["toggle-theme"],
   setup(props, { emit }) {
     const store = useStore();
     const { locale } = useI18n();
-    const searchQuery = ref('');
+    const searchQuery = ref("");
     const isLoading = ref(false);
     const showLanguageDropdown = ref(false);
-    
+
     // Language dropdown options
     const languageOptions = [
-      { name: 'English', code: 'en' },
-      { name: 'العربية', code: 'ar' },
-      { name: 'Français', code: 'fr' }
+      { name: "English", code: "en" },
+      { name: "العربية", code: "ar" },
+      { name: "Français", code: "fr" },
     ];
-    
+
     // Selected language
     const selectedLanguage = computed(() => {
-      return languageOptions.find(lang => lang.code === locale.value) || languageOptions[0];
+      return (
+        languageOptions.find((lang) => lang.code === locale.value) ||
+        languageOptions[0]
+      );
     });
-    
+
     // Toggle theme function
     const toggleTheme = () => {
-      emit('toggle-theme');
+      const newTheme = props.currentTheme === "dark" ? "light" : "dark";
+      store.dispatch("changeTheme", newTheme);
+      emit("toggle-theme", newTheme);
     };
-    
+
     // Toggle language dropdown
     const toggleLanguageDropdown = () => {
       showLanguageDropdown.value = !showLanguageDropdown.value;
     };
-    
+
     // Select language
     const selectLanguage = (lang) => {
       locale.value = lang.code;
-      store.dispatch('changeLanguage', lang.code);
+      store.dispatch("changeLanguage", lang.code);
       showLanguageDropdown.value = false;
     };
-    
+
     // Refresh feed function
     const refreshFeed = async () => {
       isLoading.value = true;
-      await store.dispatch('fetchFeeds');
+      await store.dispatch("fetchFeeds");
       isLoading.value = false;
     };
-    
+
     // Close language dropdown when clicking outside
     const handleClickOutside = (event) => {
-      const dropdown = document.querySelector('.language-dropdown-container');
-      if (dropdown && !dropdown.contains(event.target) && showLanguageDropdown.value) {
+      const dropdown = document.querySelector(".language-dropdown-container");
+      if (
+        dropdown &&
+        !dropdown.contains(event.target) &&
+        showLanguageDropdown.value
+      ) {
         showLanguageDropdown.value = false;
       }
     };
-    
+
     // Add/remove event listener for clicks
     onMounted(() => {
-      document.addEventListener('click', handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
     });
-    
+
     // Clean up event listener
     onMounted(() => {
       return () => {
-        document.removeEventListener('click', handleClickOutside);
+        document.removeEventListener("click", handleClickOutside);
       };
     });
-    
+
     return {
       logoSrc,
       searchQuery,
@@ -173,10 +251,10 @@ export default {
       toggleTheme,
       toggleLanguageDropdown,
       selectLanguage,
-      refreshFeed
+      refreshFeed,
     };
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -340,8 +418,12 @@ export default {
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Language Dropdown */
@@ -415,11 +497,11 @@ export default {
   .search-container {
     display: none;
   }
-  
+
   .actions-container {
     gap: 0.25rem;
   }
-  
+
   .app-title {
     display: none;
   }

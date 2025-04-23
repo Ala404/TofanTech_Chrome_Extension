@@ -1,19 +1,21 @@
 <template>
-  <div :class="[
-    'tofantech-app',
-    currentTheme === 'dark' ? 'dark-theme' : 'light-theme',
-    { 'rtl': currentLocale === 'ar' }
-  ]">
+  <div
+    :class="[
+      'tofantech-app',
+      currentTheme === 'dark' ? 'dark-theme' : 'light-theme',
+      { rtl: currentLocale === 'ar' },
+    ]"
+  >
     <Toast position="top-right" />
 
     <div class="app-container">
       <SideMenu />
-      
+
       <div class="main-content">
         <TopBar @toggle-theme="toggleTheme" :current-theme="currentTheme" />
-        
+
         <NewsTicker class="news-ticker" />
-        
+
         <main class="content-area">
           <router-view />
         </main>
@@ -23,96 +25,117 @@
 </template>
 
 <script>
-import { computed, onMounted, ref, watch } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { useStore } from 'vuex';
-import SideMenu from './components/SideMenu.vue';
-import TopBar from './components/TopBar.vue';
-import NewsTicker from './components/NewsTicker.vue';
+import { computed, onMounted, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
+import { useStore } from "vuex";
+import SideMenu from "./components/SideMenu.vue";
+import TopBar from "./components/TopBar.vue";
+import NewsTicker from "./components/NewsTicker.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     SideMenu,
     TopBar,
-    NewsTicker
+    NewsTicker,
   },
   setup() {
     const store = useStore();
     const { locale } = useI18n();
     const currentTheme = computed(() => store.state.theme);
-    
+
     // Initialize app state from localStorage
     onMounted(() => {
       // First check if there's theme in localStorage
-      const savedTheme = localStorage.getItem('theme');
+      const savedTheme = localStorage.getItem("theme");
       if (savedTheme) {
         // Use store dispatch to ensure it updates everywhere
-        store.dispatch('changeTheme', savedTheme);
+        store.dispatch("changeTheme", savedTheme);
+        document.documentElement.classList.toggle(
+          "dark",
+          savedTheme === "dark"
+        );
       } else {
         // Set default theme to dark
-        store.dispatch('changeTheme', 'dark');
+        store.dispatch("changeTheme", "dark");
+        document.documentElement.classList.add("dark");
       }
-      
+
       // Load language preference
-      const savedLanguage = localStorage.getItem('language');
+      const savedLanguage = localStorage.getItem("language");
       if (savedLanguage) {
-        store.dispatch('changeLanguage', savedLanguage);
+        store.dispatch("changeLanguage", savedLanguage);
         locale.value = savedLanguage;
       } else {
-        localStorage.setItem('language', locale.value);
+        localStorage.setItem("language", locale.value);
       }
-      
+
       // Handle RTL for Arabic language
-      document.documentElement.dir = locale.value === 'ar' ? 'rtl' : 'ltr';
-      
+      document.documentElement.dir = locale.value === "ar" ? "rtl" : "ltr";
+
       // Fetch initial news feeds
-      store.dispatch('fetchFeeds');
+      store.dispatch("fetchFeeds");
     });
-    
+
+    // Watch for theme changes
+    watch(currentTheme, (newTheme) => {
+      document.documentElement.classList.toggle("dark", newTheme === "dark");
+    });
+
     // Function to toggle between dark and light themes
     const toggleTheme = () => {
-      const newTheme = currentTheme.value === 'dark' ? 'light' : 'dark';
-      store.dispatch('changeTheme', newTheme);
+      const newTheme = currentTheme.value === "dark" ? "light" : "dark";
+      store.dispatch("changeTheme", newTheme);
     };
-    
+
     // Watch for language changes and update RTL/LTR
     watch(locale, (newLocale) => {
-      document.documentElement.dir = newLocale === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.dir = newLocale === "ar" ? "rtl" : "ltr";
     });
-    
+
     // Computed property for current locale
     const currentLocale = computed(() => locale.value);
-    
+
     return {
       currentTheme,
       currentLocale,
-      toggleTheme
+      toggleTheme,
     };
-  }
-}
+  },
+};
 </script>
 
 <style>
 .tofantech-app {
   width: 100%;
   height: 100vh;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
   transition: background-color 0.3s, color 0.3s;
   overflow: hidden;
   font-size: 14px;
   line-height: 1.5;
 }
 
-/* Theme settings come from the CSS variables in theme.css */
-.dark-theme {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+/* Theme settings */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --accent-500: #8b5cf6;
+  --accent-600: #7c3aed;
 }
 
-.light-theme {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+.dark {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --border-color: #374151;
+  --accent-500: #8b5cf6;
+  --accent-600: #7c3aed;
 }
 
 .rtl {
@@ -138,9 +161,9 @@ export default {
   flex: 1;
   overflow-y: auto;
   padding: 1.5rem;
-  display: grid;
+  /*display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 1.5rem;*/
   background-color: var(--bg-primary);
 }
 
@@ -198,7 +221,9 @@ button {
 }
 
 /* Global transition for theme changes */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-duration: 0.2s;
   transition-timing-function: ease;

@@ -27,7 +27,7 @@
       />
     </div>
     
-    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
       <div v-for="article in articles" :key="article.id" class="h-full">
         <NewsCard :article="article" />
       </div>

@@ -1,9 +1,6 @@
-import axios from 'axios';
-import { defaultImages } from './feedSources';
-import crypto from 'crypto-js';
-
-// Use our local proxy server to avoid CORS issues
-const LOCAL_PROXY = 'http://localhost:3000/api/rss?url=';
+import axios from "axios";
+import { defaultImages } from "./feedSources";
+import crypto from "crypto-js";
 
 /**
  * Fetches and parses an RSS feed
@@ -13,62 +10,71 @@ const LOCAL_PROXY = 'http://localhost:3000/api/rss?url=';
  */
 export async function fetchRssFeed(url, limit = 20) {
   try {
-    // Encode the URL for our proxy
-    const encodedUrl = encodeURIComponent(url);
     console.log(`Fetching RSS feed from: ${url}`);
-    const response = await axios.get(`${LOCAL_PROXY}${encodedUrl}`);
-    
+    const response = await axios.get(url, {
+      headers: {
+        Accept:
+          "application/rss+xml, application/xml, text/xml, application/atom+xml, */*",
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      },
+      mode: "cors",
+    });
+
     // Parse the XML content
     const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(response.data, 'text/xml');
-    
+    const xmlDoc = parser.parseFromString(response.data, "text/xml");
+
     // Handle different RSS formats (RSS and Atom)
-    const isAtom = xmlDoc.querySelector('feed') !== null;
-    
-    const items = isAtom 
-      ? Array.from(xmlDoc.querySelectorAll('entry'))
-      : Array.from(xmlDoc.querySelectorAll('item'));
-    
+    const isAtom = xmlDoc.querySelector("feed") !== null;
+
+    const items = isAtom
+      ? Array.from(xmlDoc.querySelectorAll("entry"))
+      : Array.from(xmlDoc.querySelectorAll("item"));
+
     // Get the feed source title
     const sourceTitle = isAtom
-      ? xmlDoc.querySelector('feed > title')?.textContent
-      : xmlDoc.querySelector('channel > title')?.textContent;
-    
+      ? xmlDoc.querySelector("feed > title")?.textContent
+      : xmlDoc.querySelector("channel > title")?.textContent;
+
     // Process items (limited by the limit parameter)
-    return items.slice(0, limit).map(item => {
+    return items.slice(0, limit).map((item) => {
       // Common data parsing for both RSS and Atom
-      const title = item.querySelector('title')?.textContent || 'No Title';
-      
+      const title = item.querySelector("title")?.textContent || "No Title";
+
       // Handle different content elements
-      const contentElement = item.querySelector('content, content\\:encoded, description');
-      const content = contentElement?.textContent || '';
-      
+      const contentElement = item.querySelector(
+        "content, content\\:encoded, description"
+      );
+      const content = contentElement?.textContent || "";
+
       // Handle different date elements and formats
-      const dateElement = item.querySelector('pubDate, published, updated');
-      const dateStr = dateElement?.textContent || '';
+      const dateElement = item.querySelector("pubDate, published, updated");
+      const dateStr = dateElement?.textContent || "";
       const pubDate = dateStr ? new Date(dateStr) : new Date();
-      
+
       // Handle links
       const linkElement = isAtom
-        ? item.querySelector('link[rel="alternate"]') || item.querySelector('link')
-        : item.querySelector('link');
-      
+        ? item.querySelector('link[rel="alternate"]') ||
+          item.querySelector("link")
+        : item.querySelector("link");
+
       const link = isAtom
-        ? linkElement?.getAttribute('href')
+        ? linkElement?.getAttribute("href")
         : linkElement?.textContent;
-      
+
       // Try to extract an image from the content
       let imageUrl = extractImageFromContent(content);
-      
+
       // If no image found, use a default based on source category
       if (!imageUrl) {
         const category = guessCategory(sourceTitle, title, content);
         imageUrl = getRandomDefaultImage(category);
       }
-      
+
       // Generate a unique ID for the article
       const id = crypto.MD5(link || title + pubDate.toString()).toString();
-      
+
       // Format the article data
       return {
         id,
@@ -79,10 +85,10 @@ export async function fetchRssFeed(url, limit = 20) {
         pubDate,
         imageUrl,
         source: {
-          title: sourceTitle || 'Unknown Source',
-          url
+          title: sourceTitle || "Unknown Source",
+          url,
         },
-        readTime: calculateReadTime(content)
+        readTime: calculateReadTime(content),
       };
     });
   } catch (error) {
@@ -98,27 +104,27 @@ export async function fetchRssFeed(url, limit = 20) {
  */
 function extractImageFromContent(content) {
   if (!content) return null;
-  
+
   // Create a temporary element to parse the HTML
-  const tempDiv = document.createElement('div');
+  const tempDiv = document.createElement("div");
   tempDiv.innerHTML = content;
-  
+
   // Look for images in the content
-  const img = tempDiv.querySelector('img');
+  const img = tempDiv.querySelector("img");
   if (img && img.src) {
     return img.src;
   }
-  
+
   // Look for image URLs in background styles
   const elemWithBg = tempDiv.querySelector('[style*="background-image"]');
   if (elemWithBg) {
-    const style = elemWithBg.getAttribute('style');
+    const style = elemWithBg.getAttribute("style");
     const match = /background-image:\s*url\(['"]?([^'"]*?)['"]?\)/i.exec(style);
     if (match && match[1]) {
       return match[1];
     }
   }
-  
+
   return null;
 }
 
@@ -128,17 +134,17 @@ function extractImageFromContent(content) {
  * @returns {string} - The extracted description
  */
 function extractDescription(content) {
-  if (!content) return '';
-  
+  if (!content) return "";
+
   // Create a temporary element to parse the HTML
-  const tempDiv = document.createElement('div');
+  const tempDiv = document.createElement("div");
   tempDiv.innerHTML = content;
-  
+
   // Get text content and limit to 160 characters
-  let text = tempDiv.textContent || '';
-  text = text.trim().replace(/\s+/g, ' ');
-  
-  return text.length > 160 ? text.substring(0, 157) + '...' : text;
+  let text = tempDiv.textContent || "";
+  text = text.trim().replace(/\s+/g, " ");
+
+  return text.length > 160 ? text.substring(0, 157) + "..." : text;
 }
 
 /**
@@ -147,27 +153,30 @@ function extractDescription(content) {
  * @returns {string} - The cleaned up content
  */
 function cleanupContent(content) {
-  if (!content) return '';
-  
+  if (!content) return "";
+
   // Remove potentially dangerous elements/attributes
-  const tempDiv = document.createElement('div');
+  const tempDiv = document.createElement("div");
   tempDiv.innerHTML = content;
-  
+
   // Remove script and iframe elements
-  const scripts = tempDiv.querySelectorAll('script, iframe');
-  scripts.forEach(script => script.remove());
-  
+  const scripts = tempDiv.querySelectorAll("script, iframe");
+  scripts.forEach((script) => script.remove());
+
   // Remove event handlers and javascript: URLs
-  const allElements = tempDiv.querySelectorAll('*');
-  allElements.forEach(el => {
+  const allElements = tempDiv.querySelectorAll("*");
+  allElements.forEach((el) => {
     // Remove on* attributes
-    Array.from(el.attributes).forEach(attr => {
-      if (attr.name.startsWith('on') || (attr.name === 'href' && attr.value.startsWith('javascript:'))) {
+    Array.from(el.attributes).forEach((attr) => {
+      if (
+        attr.name.startsWith("on") ||
+        (attr.name === "href" && attr.value.startsWith("javascript:"))
+      ) {
         el.removeAttribute(attr.name);
       }
     });
   });
-  
+
   return tempDiv.innerHTML;
 }
 
@@ -178,18 +187,18 @@ function cleanupContent(content) {
  */
 function calculateReadTime(content) {
   if (!content) return 1;
-  
+
   // Create a temporary element to parse the HTML
-  const tempDiv = document.createElement('div');
+  const tempDiv = document.createElement("div");
   tempDiv.innerHTML = content;
-  
+
   // Get text content
-  const text = tempDiv.textContent || '';
-  
+  const text = tempDiv.textContent || "";
+
   // Average reading speed: 200 words per minute
   const wordCount = text.split(/\s+/).length;
   const readingTime = Math.ceil(wordCount / 200);
-  
+
   // Return at least 1 minute
   return Math.max(1, readingTime);
 }
@@ -202,17 +211,17 @@ function calculateReadTime(content) {
  * @returns {string} - The guessed category
  */
 function guessCategory(sourceTitle, articleTitle, content) {
-  const text = (sourceTitle + ' ' + articleTitle + ' ' + content).toLowerCase();
-  
+  const text = (sourceTitle + " " + articleTitle + " " + content).toLowerCase();
+
   if (/meme|humor|funny|joke|wtf/i.test(text)) {
-    return 'meme';
+    return "meme";
   }
-  
+
   if (/motivation|inspire|success|mindset|growth|positive/i.test(text)) {
-    return 'motivation';
+    return "motivation";
   }
-  
-  return 'tech';
+
+  return "tech";
 }
 
 /**
