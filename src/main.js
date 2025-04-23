@@ -18,7 +18,7 @@ import ToggleButton from 'primevue/togglebutton';
 import Toast from 'primevue/toast';
 import Chip from 'primevue/chip';
 import ScrollPanel from 'primevue/scrollpanel';
-import './assets/theme.css';
+// Tailwind CSS now loaded via CDN
 
 // Get stored language preference or default to 'en'
 const storedLanguage = localStorage.getItem('language') || 'en';

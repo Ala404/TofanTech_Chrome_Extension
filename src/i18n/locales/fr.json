@@ -5,8 +5,12 @@
   },
   "nav": {
     "home": "Accueil",
+    "explore": "Explorer",
+    "history": "Historique",
     "bookmarks": "Favoris",
-    "settings": "Paramètres"
+    "tags": "Étiquettes",
+    "settings": "Paramètres",
+    "contact": "Contacter le Développeur"
   },
   "actions": {
     "bookmark": "Ajouter aux favoris",
@@ -60,7 +64,8 @@
     }
   },
   "ticker": {
-    "title": "Fil d'actualité tech"
+    "title": "Fil d'actualité tech",
+    "loading": "Chargement du fil d'actualité..."
   },
   "time": {
     "now": "À l'instant",

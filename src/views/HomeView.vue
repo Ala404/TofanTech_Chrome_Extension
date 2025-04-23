@@ -1,32 +1,34 @@
 <template>
-  <div class="home-view">
-    <div v-if="isLoading" class="loading-container">
-      <i class="pi pi-spin pi-spinner loading-icon"></i>
-      <p>{{ $t('feed.loading') }}</p>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div v-if="isLoading" class="flex flex-col items-center justify-center py-16 text-center">
+      <i class="pi pi-spin pi-spinner text-5xl text-secondary mb-4"></i>
+      <p class="text-lg text-secondary">{{ $t('feed.loading') }}</p>
     </div>
     
-    <div v-else-if="error" class="error-container">
-      <i class="pi pi-exclamation-triangle error-icon"></i>
-      <p>{{ error }}</p>
+    <div v-else-if="error" class="flex flex-col items-center justify-center py-16 text-center">
+      <i class="pi pi-exclamation-triangle text-5xl text-red-500 mb-4"></i>
+      <p class="text-lg text-secondary mb-4">{{ error }}</p>
       <Button 
         :label="$t('actions.refresh')" 
         icon="pi pi-refresh" 
         @click="refreshFeed"
+        class="p-button-primary"
       />
     </div>
     
-    <div v-else-if="articles.length === 0" class="empty-container">
-      <i class="pi pi-inbox empty-icon"></i>
-      <p>{{ $t('feed.empty') }}</p>
+    <div v-else-if="articles.length === 0" class="flex flex-col items-center justify-center py-16 text-center">
+      <i class="pi pi-inbox text-5xl text-secondary mb-4"></i>
+      <p class="text-lg text-secondary mb-4">{{ $t('feed.empty') }}</p>
       <Button 
         :label="$t('actions.refresh')" 
         icon="pi pi-refresh" 
         @click="refreshFeed"
+        class="p-button-primary"
       />
     </div>
     
-    <div v-else class="articles-grid">
-      <div v-for="article in articles" :key="article.id" class="article-card-container">
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div v-for="article in articles" :key="article.id" class="h-full">
         <NewsCard :article="article" />
       </div>
     </div>
@@ -78,42 +80,5 @@ export default {
 </script>
 
 <style scoped>
-.home-view {
-  padding: 1rem;
-}
-
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.article-card-container {
-  height: 100%;
-}
-
-.loading-container,
-.error-container,
-.empty-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.loading-icon,
-.error-icon,
-.empty-icon {
-  font-size: 3rem;
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 768px) {
-  .articles-grid {
-    grid-template-columns: 1fr;
-  }
-}
+/* Custom styles if needed later */
 </style>
