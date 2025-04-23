@@ -5,8 +5,12 @@
   },
   "nav": {
     "home": "Home",
+    "explore": "Explore",
+    "history": "History",
     "bookmarks": "Bookmarks",
-    "settings": "Settings"
+    "tags": "Tags",
+    "settings": "Settings",
+    "contact": "Contact Developer"
   },
   "actions": {
     "bookmark": "Bookmark",
@@ -60,7 +64,8 @@
     }
   },
   "ticker": {
-    "title": "Tech Ticker"
+    "title": "Tech Ticker",
+    "loading": "Loading feed..."
   },
   "time": {
     "now": "Just now",
