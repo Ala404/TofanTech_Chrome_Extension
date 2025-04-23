@@ -1,7 +1,7 @@
 <template>
   <div :class="[
     'tofantech-app',
-    theme === 'dark' ? 'dark-theme' : 'light-theme',
+    currentTheme === 'dark' ? 'dark-theme' : 'light-theme',
     { 'rtl': currentLocale === 'ar' }
   ]">
     <Toast position="top-right" />
@@ -10,7 +10,7 @@
       <SideMenu />
       
       <div class="main-content">
-        <TopBar />
+        <TopBar @toggle-theme="toggleTheme" :current-theme="currentTheme" />
         
         <NewsTicker class="news-ticker" />
         
@@ -40,41 +40,44 @@ export default {
   setup() {
     const store = useStore();
     const { locale } = useI18n();
-    const theme = ref('dark');
+    const currentTheme = computed(() => store.state.theme);
     
     // Initialize app state from localStorage
     onMounted(() => {
-      // Load theme preference
+      // First check if there's theme in localStorage
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
-        theme.value = savedTheme;
-        document.documentElement.setAttribute('data-theme', savedTheme);
+        // Use store dispatch to ensure it updates everywhere
+        store.dispatch('changeTheme', savedTheme);
       } else {
-        localStorage.setItem('theme', theme.value);
-        document.documentElement.setAttribute('data-theme', theme.value);
+        // Set default theme to dark
+        store.dispatch('changeTheme', 'dark');
       }
       
       // Load language preference
       const savedLanguage = localStorage.getItem('language');
       if (savedLanguage) {
+        store.dispatch('changeLanguage', savedLanguage);
         locale.value = savedLanguage;
       } else {
         localStorage.setItem('language', locale.value);
       }
       
+      // Handle RTL for Arabic language
+      document.documentElement.dir = locale.value === 'ar' ? 'rtl' : 'ltr';
+      
       // Fetch initial news feeds
       store.dispatch('fetchFeeds');
     });
     
-    // Watch for theme changes and update localStorage
-    watch(theme, (newTheme) => {
-      localStorage.setItem('theme', newTheme);
-      document.documentElement.setAttribute('data-theme', newTheme);
-    });
+    // Function to toggle between dark and light themes
+    const toggleTheme = () => {
+      const newTheme = currentTheme.value === 'dark' ? 'light' : 'dark';
+      store.dispatch('changeTheme', newTheme);
+    };
     
-    // Watch for language changes and update localStorage
+    // Watch for language changes and update RTL/LTR
     watch(locale, (newLocale) => {
-      localStorage.setItem('language', newLocale);
       document.documentElement.dir = newLocale === 'ar' ? 'rtl' : 'ltr';
     });
     
@@ -82,8 +85,9 @@ export default {
     const currentLocale = computed(() => locale.value);
     
     return {
-      theme,
-      currentLocale
+      currentTheme,
+      currentLocale,
+      toggleTheme
     };
   }
 }
