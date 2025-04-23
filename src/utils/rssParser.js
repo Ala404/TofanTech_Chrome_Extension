@@ -2,8 +2,8 @@ import axios from 'axios';
 import { defaultImages } from './feedSources';
 import crypto from 'crypto-js';
 
-// Use a CORS proxy to avoid cross-origin issues
-const CORS_PROXY = 'https://api.allorigins.win/get?url=';
+// Use our local proxy server to avoid CORS issues
+const LOCAL_PROXY = 'http://localhost:3000/api/rss?url=';
 
 /**
  * Fetches and parses an RSS feed
@@ -13,13 +13,14 @@ const CORS_PROXY = 'https://api.allorigins.win/get?url=';
  */
 export async function fetchRssFeed(url, limit = 20) {
   try {
-    // Encode the URL for the CORS proxy
+    // Encode the URL for our proxy
     const encodedUrl = encodeURIComponent(url);
-    const response = await axios.get(`${CORS_PROXY}${encodedUrl}`);
+    console.log(`Fetching RSS feed from: ${url}`);
+    const response = await axios.get(`${LOCAL_PROXY}${encodedUrl}`);
     
     // Parse the XML content
     const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(response.data.contents, 'text/xml');
+    const xmlDoc = parser.parseFromString(response.data, 'text/xml');
     
     // Handle different RSS formats (RSS and Atom)
     const isAtom = xmlDoc.querySelector('feed') !== null;

@@ -145,7 +145,7 @@ export default {
     const readingHistory = ref([
       {
         id: 1,
-        title: 'The Future of JavaScript: What's New in ECMAScript 2023',
+        title: 'The Future of JavaScript: What\'s New in ECMAScript 2023',
         source: { title: 'DEV.to', id: 'dev' },
         readAt: new Date(new Date().setHours(new Date().getHours() - 2))
       },
