@@ -1,0 +1,77 @@
+{
+  "app": {
+    "name": "TofanTech",
+    "tagline": "Votre flux quotidien d'actualités tech"
+  },
+  "nav": {
+    "home": "Accueil",
+    "bookmarks": "Favoris",
+    "settings": "Paramètres"
+  },
+  "actions": {
+    "bookmark": "Ajouter aux favoris",
+    "unbookmark": "Retirer des favoris",
+    "share": "Partager",
+    "read": "Lire l'article",
+    "refresh": "Actualiser le flux",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "apply": "Appliquer",
+    "search": "Rechercher"
+  },
+  "feed": {
+    "title": "Actualités Tech",
+    "empty": "Aucun article trouvé. Essayez d'actualiser ou de modifier vos paramètres de flux.",
+    "loading": "Chargement des articles...",
+    "error": "Erreur lors du chargement des articles. Veuillez réessayer."
+  },
+  "article": {
+    "readTime": "Lecture de {time} min",
+    "source": "Source: {source}",
+    "relatedArticles": "Articles connexes",
+    "publishedOn": "Publié le {date}"
+  },
+  "bookmarks": {
+    "title": "Vos Favoris",
+    "empty": "Vous n'avez pas encore ajouté d'articles aux favoris.",
+    "remove": "Retirer des favoris"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "theme": {
+      "label": "Thème",
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "language": {
+      "label": "Langue",
+      "en": "English",
+      "ar": "العربية",
+      "fr": "Français"
+    },
+    "feedSources": {
+      "label": "Sources de flux",
+      "selectAll": "Tout sélectionner",
+      "deselectAll": "Tout désélectionner"
+    },
+    "readingPreferences": {
+      "label": "Préférences de lecture",
+      "openInNewTab": "Ouvrir les articles dans un nouvel onglet"
+    }
+  },
+  "ticker": {
+    "title": "Fil d'actualité tech"
+  },
+  "time": {
+    "now": "À l'instant",
+    "minutesAgo": "Il y a {count} minute | Il y a {count} minutes",
+    "hoursAgo": "Il y a {count} heure | Il y a {count} heures",
+    "daysAgo": "Il y a {count} jour | Il y a {count} jours",
+    "monthsAgo": "Il y a {count} mois | Il y a {count} mois",
+    "yearsAgo": "Il y a {count} an | Il y a {count} ans"
+  },
+  "errors": {
+    "feedFetch": "Impossible de récupérer les flux. Veuillez vérifier votre connexion Internet et réessayer.",
+    "articleNotFound": "Article introuvable. Il a peut-être été supprimé ou n'est plus disponible."
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "app": {
+    "name": "TofanTech",
+    "tagline": "Your daily tech news feed"
+  },
+  "nav": {
+    "home": "Home",
+    "bookmarks": "Bookmarks",
+    "settings": "Settings"
+  },
+  "actions": {
+    "bookmark": "Bookmark",
+    "unbookmark": "Remove Bookmark",
+    "share": "Share",
+    "read": "Read Article",
+    "refresh": "Refresh Feed",
+    "save": "Save",
+    "cancel": "Cancel",
+    "apply": "Apply",
+    "search": "Search"
+  },
+  "feed": {
+    "title": "Tech News Feed",
+    "empty": "No articles found. Try refreshing or changing your feed settings.",
+    "loading": "Loading articles...",
+    "error": "Error loading articles. Please try again."
+  },
+  "article": {
+    "readTime": "{time} min read",
+    "source": "Source: {source}",
+    "relatedArticles": "Related Articles",
+    "publishedOn": "Published on {date}"
+  },
+  "bookmarks": {
+    "title": "Your Bookmarks",
+    "empty": "You haven't bookmarked any articles yet.",
+    "remove": "Remove from bookmarks"
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": {
+      "label": "Theme",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "language": {
+      "label": "Language",
+      "en": "English",
+      "ar": "العربية",
+      "fr": "Français"
+    },
+    "feedSources": {
+      "label": "Feed Sources",
+      "selectAll": "Select All",
+      "deselectAll": "Deselect All"
+    },
+    "readingPreferences": {
+      "label": "Reading Preferences",
+      "openInNewTab": "Open articles in new tab"
+    }
+  },
+  "ticker": {
+    "title": "Tech Ticker"
+  },
+  "time": {
+    "now": "Just now",
+    "minutesAgo": "{count} minute ago | {count} minutes ago",
+    "hoursAgo": "{count} hour ago | {count} hours ago",
+    "daysAgo": "{count} day ago | {count} days ago",
+    "monthsAgo": "{count} month ago | {count} months ago",
+    "yearsAgo": "{count} year ago | {count} years ago"
+  },
+  "errors": {
+    "feedFetch": "Could not fetch feeds. Please check your internet connection and try again.",
+    "articleNotFound": "Article not found. It may have been removed or is no longer available."
+  }
+}
