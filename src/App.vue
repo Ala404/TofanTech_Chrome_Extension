@@ -97,35 +97,20 @@ export default {
 .tofantech-app {
   width: 100%;
   height: 100vh;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   transition: background-color 0.3s, color 0.3s;
   overflow: hidden;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
+/* Theme settings come from the CSS variables in theme.css */
 .dark-theme {
-  --bg-primary: #121212;
-  --bg-secondary: #1e1e1e;
-  --bg-card: #252525;
-  --text-primary: #ffffff;
-  --text-secondary: #b3b3b3;
-  --brand-primary: #4ade80;
-  --brand-secondary: #22c55e;
-  --border-color: #333333;
-  
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
 
 .light-theme {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f9fafb;
-  --bg-card: #ffffff;
-  --text-primary: #111827;
-  --text-secondary: #4b5563;
-  --brand-primary: #22c55e;
-  --brand-secondary: #16a34a;
-  --border-color: #e5e7eb;
-  
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
@@ -146,17 +131,76 @@ export default {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background-color: var(--bg-primary);
 }
 
 .content-area {
   flex: 1;
   overflow-y: auto;
-  padding: 1rem;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  background-color: var(--bg-primary);
 }
 
 .news-ticker {
   padding: 0.5rem 1rem;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border-color);
+}
+
+/* Global Link Style */
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--accent-500);
+}
+
+/* Global Button Reset */
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Global Focus Styles */
+*:focus-visible {
+  outline: 2px solid var(--accent-500);
+  outline-offset: 2px;
+}
+
+/* Remove browser default focus for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Global scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-secondary);
+}
+
+/* Global transition for theme changes */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
 }
 </style>
