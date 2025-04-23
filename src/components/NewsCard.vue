@@ -164,7 +164,54 @@ export default {
       return t('time.yearsAgo', { count: diffYears });
     });
     
-    // Get tag severity for styling
+    // Get category color for the badge
+    const getCategoryColor = (category) => {
+      // Daily.dev style color mapping
+      const colorMap = {
+        javascript: '#F7DF1E',
+        typescript: '#3178C6',
+        webdev: '#2196F3',
+        react: '#61DAFB',
+        vue: '#4FC08D',
+        angular: '#DD0031',
+        node: '#68A063',
+        python: '#3776AB',
+        java: '#ED8B00',
+        golang: '#00ADD8',
+        php: '#777BB4',
+        ruby: '#CC342D',
+        csharp: '#239120',
+        dotnet: '#512BD4',
+        rust: '#DEA584',
+        devops: '#FF9900',
+        cloud: '#0078D4',
+        aws: '#FF9900',
+        azure: '#0078D4',
+        gcp: '#4285F4',
+        kubernetes: '#326CE5',
+        docker: '#2496ED',
+        database: '#4479A1',
+        ai: '#9C27B0',
+        ml: '#FF5722',
+        datascience: '#E91E63',
+        mobile: '#3DDC84',
+        ios: '#000000',
+        android: '#3DDC84',
+        frontend: '#42A5F5',
+        backend: '#26A69A',
+        security: '#F44336',
+        web3: '#F16822',
+        default: '#607D8B' // Default color for other categories
+      };
+      
+      // Convert to lowercase and remove spaces for matching
+      const normalizedCategory = category ? category.toLowerCase().replace(/\s+/g, '') : 'default';
+      
+      // Return the color or default if not found
+      return colorMap[normalizedCategory] || colorMap.default;
+    };
+    
+    // Get tag severity for styling (kept for compatibility)
     const getTagSeverity = (tag) => {
       const tagMap = {
         javascript: 'warning',
@@ -227,6 +274,7 @@ export default {
       isBookmarked,
       articleTags,
       formattedDate,
+      getCategoryColor,
       getTagSeverity,
       toggleBookmark,
       openArticle,
@@ -237,11 +285,16 @@ export default {
 </script>
 
 <style scoped>
+/* NewsCard Styles - styled after daily.dev */
 .news-card {
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.2s ease;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
 }
 
 .news-card:hover {
@@ -249,10 +302,12 @@ export default {
   box-shadow: var(--shadow-md);
 }
 
+/* Card Image Container */
 .card-image-container {
   position: relative;
-  height: 180px;
+  height: 160px;
   overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .card-image {
@@ -266,67 +321,168 @@ export default {
   transform: scale(1.05);
 }
 
-.card-source-badge {
+/* Category Badge */
+.card-category {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.5rem;
   z-index: 1;
 }
 
+.category-label {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+  color: #000000;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Content Section */
+.card-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Source and Date Info */
+.card-meta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.card-source {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.source-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.source-name {
+  font-weight: 500;
+}
+
+.card-date {
+  font-size: 0.75rem;
+}
+
+/* Article Title */
 .card-title-link {
   text-decoration: none;
-  color: inherit;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  display: block;
 }
 
 .card-title {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   margin: 0;
   line-height: 1.4;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-.card-description {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin: 0.75rem 0;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
 
+/* Tags */
 .card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
   margin-bottom: 0.75rem;
+  margin-top: auto;
 }
 
-.card-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.75rem;
+.card-tag {
+  font-size: 0.7rem;
   color: var(--text-secondary);
-  margin: 0.5rem 0;
 }
 
+/* Card Actions */
 .card-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 0.75rem;
   border-top: 1px solid var(--border-color);
+  margin-top: 0.5rem;
+}
+
+/* Stats (views/comments) */
+.card-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card-stat-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Action Buttons */
+.card-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-action-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.card-action-btn:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.card-action-btn.active {
+  color: var(--accent-500);
+}
+
+.card-action-icon {
+  width: 18px;
+  height: 18px;
 }
 
 /* RTL Support */
-:deep([dir="rtl"]) .card-source-badge {
-  right: auto;
-  left: 0.5rem;
+:deep([dir="rtl"]) .card-category {
+  left: auto;
+  right: 0.5rem;
+}
+
+:deep([dir="rtl"]) .card-source {
+  flex-direction: row-reverse;
+}
+
+:deep([dir="rtl"]) .card-action-buttons {
+  flex-direction: row-reverse;
 }
 </style>
