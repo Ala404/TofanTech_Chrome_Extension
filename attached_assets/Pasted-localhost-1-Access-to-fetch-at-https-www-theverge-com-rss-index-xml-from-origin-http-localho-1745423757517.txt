@@ -1,0 +1,151 @@
+localhost/:1 Access to fetch at 'https://www.theverge.com/rss/index.xml' from origin 'http://localhost:5173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+feedService.ts:67 
+            
+            
+           GET https://www.theverge.com/rss/index.xml net::ERR_FAILED 200 (OK)
+parseRSSFeed @ feedService.ts:67
+fetchFeedItems @ feedService.ts:121
+fetchFeedItems @ rss.ts:23
+fetchFeeds @ feeds.ts:29
+wrappedAction @ pinia.js?v=666e877c:1106
+store.<computed> @ pinia.js?v=666e877c:784
+(anonymous) @ App.vue:31
+(anonymous) @ chunk-U3LI7FBV.js?v=9d32f090:4901
+callWithErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2263
+callWithAsyncErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2270
+hook.__weh.hook.__weh @ chunk-U3LI7FBV.js?v=9d32f090:4881
+flushPostFlushCbs @ chunk-U3LI7FBV.js?v=9d32f090:2448
+render2 @ chunk-U3LI7FBV.js?v=9d32f090:8077
+mount @ chunk-U3LI7FBV.js?v=9d32f090:6018
+app.mount @ chunk-U3LI7FBV.js?v=9d32f090:12221
+(anonymous) @ main.ts:23
+feedService.ts:111 Error parsing RSS feed https://www.theverge.com/rss/index.xml: TypeError: Failed to fetch
+    at parseRSSFeed (feedService.ts:67:28)
+    at Array.map (<anonymous>)
+    at fetchFeedItems (feedService.ts:121:46)
+    at fetchFeedItems (rss.ts:23:10)
+    at Proxy.fetchFeeds (feeds.ts:29:29)
+    at Proxy.wrappedAction (pinia.js?v=666e877c:1106:18)
+    at store.<computed> (pinia.js?v=666e877c:784:44)
+    at App.vue:31:20
+    at chunk-U3LI7FBV.js?v=9d32f090:4901:40
+    at callWithErrorHandling (chunk-U3LI7FBV.js?v=9d32f090:2263:19)
+parseRSSFeed @ feedService.ts:111
+await in parseRSSFeed
+fetchFeedItems @ feedService.ts:121
+fetchFeedItems @ rss.ts:23
+fetchFeeds @ feeds.ts:29
+wrappedAction @ pinia.js?v=666e877c:1106
+store.<computed> @ pinia.js?v=666e877c:784
+(anonymous) @ App.vue:31
+(anonymous) @ chunk-U3LI7FBV.js?v=9d32f090:4901
+callWithErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2263
+callWithAsyncErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2270
+hook.__weh.hook.__weh @ chunk-U3LI7FBV.js?v=9d32f090:4881
+flushPostFlushCbs @ chunk-U3LI7FBV.js?v=9d32f090:2448
+render2 @ chunk-U3LI7FBV.js?v=9d32f090:8077
+mount @ chunk-U3LI7FBV.js?v=9d32f090:6018
+app.mount @ chunk-U3LI7FBV.js?v=9d32f090:12221
+(anonymous) @ main.ts:23
+localhost/:1 Access to fetch at 'https://techcrunch.com/feed/' from origin 'http://localhost:5173' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'https://techcrunch.com' that is not equal to the supplied origin. Have the server send the header with a valid value, or, if an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+feedService.ts:67 
+            
+            
+           GET https://techcrunch.com/feed/ net::ERR_FAILED 200 (OK)
+parseRSSFeed @ feedService.ts:67
+fetchFeedItems @ feedService.ts:121
+fetchFeedItems @ rss.ts:23
+fetchFeeds @ feeds.ts:29
+wrappedAction @ pinia.js?v=666e877c:1106
+store.<computed> @ pinia.js?v=666e877c:784
+(anonymous) @ App.vue:31
+(anonymous) @ chunk-U3LI7FBV.js?v=9d32f090:4901
+callWithErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2263
+callWithAsyncErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2270
+hook.__weh.hook.__weh @ chunk-U3LI7FBV.js?v=9d32f090:4881
+flushPostFlushCbs @ chunk-U3LI7FBV.js?v=9d32f090:2448
+render2 @ chunk-U3LI7FBV.js?v=9d32f090:8077
+mount @ chunk-U3LI7FBV.js?v=9d32f090:6018
+app.mount @ chunk-U3LI7FBV.js?v=9d32f090:12221
+(anonymous) @ main.ts:23
+feedService.ts:111 Error parsing RSS feed https://techcrunch.com/feed/: TypeError: Failed to fetch
+    at parseRSSFeed (feedService.ts:67:28)
+    at Array.map (<anonymous>)
+    at fetchFeedItems (feedService.ts:121:46)
+    at fetchFeedItems (rss.ts:23:10)
+    at Proxy.fetchFeeds (feeds.ts:29:29)
+    at Proxy.wrappedAction (pinia.js?v=666e877c:1106:18)
+    at store.<computed> (pinia.js?v=666e877c:784:44)
+    at App.vue:31:20
+    at chunk-U3LI7FBV.js?v=9d32f090:4901:40
+    at callWithErrorHandling (chunk-U3LI7FBV.js?v=9d32f090:2263:19)
+parseRSSFeed @ feedService.ts:111
+await in parseRSSFeed
+fetchFeedItems @ feedService.ts:121
+fetchFeedItems @ rss.ts:23
+fetchFeeds @ feeds.ts:29
+wrappedAction @ pinia.js?v=666e877c:1106
+store.<computed> @ pinia.js?v=666e877c:784
+(anonymous) @ App.vue:31
+(anonymous) @ chunk-U3LI7FBV.js?v=9d32f090:4901
+callWithErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2263
+callWithAsyncErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2270
+hook.__weh.hook.__weh @ chunk-U3LI7FBV.js?v=9d32f090:4881
+flushPostFlushCbs @ chunk-U3LI7FBV.js?v=9d32f090:2448
+render2 @ chunk-U3LI7FBV.js?v=9d32f090:8077
+mount @ chunk-U3LI7FBV.js?v=9d32f090:6018
+app.mount @ chunk-U3LI7FBV.js?v=9d32f090:12221
+(anonymous) @ main.ts:23
+localhost/:1 Access to fetch at 'https://feeds.arstechnica.com/arstechnica/index' from origin 'http://localhost:5173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+feedService.ts:67 
+            
+            
+           GET https://feeds.arstechnica.com/arstechnica/index net::ERR_FAILED 200 (OK)
+parseRSSFeed @ feedService.ts:67
+fetchFeedItems @ feedService.ts:121
+fetchFeedItems @ rss.ts:23
+fetchFeeds @ feeds.ts:29
+wrappedAction @ pinia.js?v=666e877c:1106
+store.<computed> @ pinia.js?v=666e877c:784
+(anonymous) @ App.vue:31
+(anonymous) @ chunk-U3LI7FBV.js?v=9d32f090:4901
+callWithErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2263
+callWithAsyncErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2270
+hook.__weh.hook.__weh @ chunk-U3LI7FBV.js?v=9d32f090:4881
+flushPostFlushCbs @ chunk-U3LI7FBV.js?v=9d32f090:2448
+render2 @ chunk-U3LI7FBV.js?v=9d32f090:8077
+mount @ chunk-U3LI7FBV.js?v=9d32f090:6018
+app.mount @ chunk-U3LI7FBV.js?v=9d32f090:12221
+(anonymous) @ main.ts:23
+feedService.ts:111 Error parsing RSS feed https://feeds.arstechnica.com/arstechnica/index: TypeError: Failed to fetch
+    at parseRSSFeed (feedService.ts:67:28)
+    at Array.map (<anonymous>)
+    at fetchFeedItems (feedService.ts:121:46)
+    at fetchFeedItems (rss.ts:23:10)
+    at Proxy.fetchFeeds (feeds.ts:29:29)
+    at Proxy.wrappedAction (pinia.js?v=666e877c:1106:18)
+    at store.<computed> (pinia.js?v=666e877c:784:44)
+    at App.vue:31:20
+    at chunk-U3LI7FBV.js?v=9d32f090:4901:40
+    at callWithErrorHandling (chunk-U3LI7FBV.js?v=9d32f090:2263:19)
+parseRSSFeed @ feedService.ts:111
+await in parseRSSFeed
+fetchFeedItems @ feedService.ts:121
+fetchFeedItems @ rss.ts:23
+fetchFeeds @ feeds.ts:29
+wrappedAction @ pinia.js?v=666e877c:1106
+store.<computed> @ pinia.js?v=666e877c:784
+(anonymous) @ App.vue:31
+(anonymous) @ chunk-U3LI7FBV.js?v=9d32f090:4901
+callWithErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2263
+callWithAsyncErrorHandling @ chunk-U3LI7FBV.js?v=9d32f090:2270
+hook.__weh.hook.__weh @ chunk-U3LI7FBV.js?v=9d32f090:4881
+flushPostFlushCbs @ chunk-U3LI7FBV.js?v=9d32f090:2448
+render2 @ chunk-U3LI7FBV.js?v=9d32f090:8077
+mount @ chunk-U3LI7FBV.js?v=9d32f090:6018
+app.mount @ chunk-U3LI7FBV.js?v=9d32f090:12221
+(anonymous) @ main.ts:23
+feeds.ts:31 feed is here: Proxy(Array) {0: {…}}
+content-all.js:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.
+    at y (content-all.js:1:49083)
+y @ content-all.js:1
